@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamShop</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+   
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/LOGO(Resize).png" alt="logo"></a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" id="home-link">Home</a></li>
+                <li><a href="#" id="accessories-link">Accessories</a></li>
+                <li><a href="#" id="camera-link">Camera</a></li>
+                <li><a href="#" id="lens-link">Lens</a></li>
+                <li><a href="#" id="cart-link">Cart</a></li>
+               <!-- Inside the <nav> element -->
+            <div class="dropdown">
+               <button class="dropbtn" onclick="toggleDropdown()"><i class="fas fa-user"></i></button>
+            <div class="dropdown-content" id="myDropdown">
+                <a href="/profile.html" id="profile-link">Profile</a>
+                <a href="login.html" id="login-link">Log In</a>
+            </div>
+            </div>
+
+            </ul>
+            <!-- Burger icon for smaller screens -->
+            <div class="burger-icon" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+
+<form>
+    <div class="content-section" id="checkout-section">
+        <h2>Checkout</h2> 
+        <!-- Customer Information -->
+        <div class="customer-info">
+            <label for="username">Email Address:</label>
+            <input type="text" id="username" name="username" required >
+        </div>
+      <!-- Your Order -->
+<div class="your-order">
+    <h3>Your Order</h3>
+    <table id="order-table" class="order-table"></table>
+    <p id="total-cost" class="total-cost"></p>
+</div>
+
+      <!-- Billing Details -->
+<div class="billing-details">
+    <h3>Billing Details</h3>
+    <div class="name-section">
+        <div class="first-name">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="last-name">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+    </div>
+
+    <label for="country">Country/Region:</label>
+    <select class="form-select country" id="country" name="country" required  onchange="loadStates()" >
+        <option selected>Select Country</option>
+    </select>
+
+    <div class="town-city-section">
+        <label for="state">Province/State:</label>
+        <select class="form-select state" id="state" name="state" required  onchange="loadCities()">
+            <option selected>Select State</option>
+        </select>
+
+        <label for="townCity">Town/City:</label>
+        <select class="form-select city" id="townCity" name="townCity" required>
+            <option selected>Select City</option>
+        </select>
+    </div>
+
+    <div class="address-section">
+        <label for="streetAddress">Street Address:</label>
+        <input type="text" id="streetAddress" name="streetAddress" required>
+
+        <label for="unit">Unit, Apartment, etc:</label>
+        <input type="text" id="unit" name="unit" required>
+    </div>
+
+    <label for="postcode">Postcode/ZIP:</label>
+    <input type="text" id="postcode" name="postcode" required>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+</div>
+
+    
+       <!-- Mode of Payment -->
+<div class="mode-of-payment">
+    <label for="paymentMethod">Mode of Payment:</label>
+    <select id="paymentMethod" name="paymentMethod" required>
+        <option value="" disabled selected>Select a payment</option>
+        <option value="cod">Cash on Delivery (COD)</option>
+        <option value="bdo">BDO</option>
+        <option value="bpi">BPI</option>
+        <option value="gcash">GCash</option>
+        <option value="maya">Maya</option>
+    </select>
+
+    <!-- hidden to -->
+<div id="creditCardInput" style="display: none;">
+    <label for="creditCardNumber">Credit Card Number:</label>
+    <input type="text" id="creditCardNumber" name="creditCardNumber" pattern="\d{16}" title="Enter 16 digits" required>
+</div>
+
+<div id="mobileNumberInput" style="display: none;">
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="text" id="mobileNumber" name="mobileNumber" pattern="\d{11}" title="Enter 11 digits" required>
+</div>
+</div>
+  
+        <button id="placeOrderButton">Place Order</button>
+    </div>
+</form>
+
+
+
+
+  <div class="content-section" id="cart-section" >
+ 
+    <h2>Your Cart</h2>
+    <p id="cart-message" class="cart-message"></p>
+
+
+    <ul id="cart-items" class="cart-items"></ul>
+    <p id="total-cost" class="total-cost"></p>
+    <button id="checkout-button">Checkout</button>
+  </div>
+
+
+  <!-- main content -->
+  <div id="main-content">
+    <!--
+    <div class="parallax-container">
+        <div class="parallax-bg" style="background-image: url('path/to/your/parallax-image.jpg');"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+          <h1>Welcome to Our Camera World</h1>
+          <p>Discover the best camera brands and elevate your photography experience.</p>
+        </div>
+      </div>
+-->
+      <div class="container">
+        <div class="content">
+          <h1>Welcome to CamShop</h1>
+          <p>Discover a wide range of cameras, accessories, and lenses for photography enthusiasts like you.</p>
+          <a href="#" class="btn" id="shop-now-btn">Shop Now</a>
+
+        </div>
+        <div class="image-container">
+          <div class="camera-3d">
+            <img src="images/banner.png" alt="3D Camera">
+          </div>
+        </div>
+      </div>
+    <!--slider sa simula
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="images/Camera-rafiki.png" alt="Product 1">
+                <div class="description">
+                    <h2>Sony</h2>
+                    <p> Dive into the world of photography with Sony's mirrorless devices. They offer high-resolution imaging, low-light prowess, and advanced speed, catering to both enthusiasts and professionals. Boasting advanced autofocus systems and 4K video features, Sony's mirrorless gear is a versatile tool for artistic pursuits.</p>
+                    <a href="#SonyInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="sony.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/nikonbanner(resize).png" alt="Product 2">
+                <div class="description">
+                    <h2>Nikon</h2>
+                    <p>Set your creativity free with Nikon's DSLR lineup. Featuring high-megapixel sensors, advanced autofocus capabilities, and 4K UHD video support, Nikon's DSLR range is a reliable companion for photographic journeys. With rugged builds and intuitive controls, they elevate your photography experience.
+                    </p>
+                    <a href="#NikonInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="nikon.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/canonbanner(resize).png" alt="Product 3">
+                <div class="description">
+                    <h2>Canon</h2>
+                    <p> Elevate your photography with Canon's DSLR choices. Merging state-of-the-art technology with user-friendly design, they yield superb image quality and facilitate 4K video recording. Canon's DSLR options are versatile, earning trust from both professionals and photography enthusiasts globally.</p>
+                    <a href="#CanonInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="canon.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/pentaxcollection-transformed.png" alt="Product 3">
+                <div class="description">
+                    <h2>Canon</h2>
+                    <p> Elevate your photography with Canon's DSLR choices. Merging state-of-the-art technology with user-friendly design, they yield superb image quality and facilitate 4K video recording. Canon's DSLR options are versatile, earning trust from both professionals and photography enthusiasts globally.</p>
+                    <a href="#CanonInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="canon.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/canonbanner(resize).png" alt="Product 3">
+                <div class="description">
+                    <h2>Canon</h2>
+                    <p> Elevate your photography with Canon's DSLR choices. Merging state-of-the-art technology with user-friendly design, they yield superb image quality and facilitate 4K video recording. Canon's DSLR options are versatile, earning trust from both professionals and photography enthusiasts globally.</p>
+                    <a href="#CanonInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="canon.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/canonbanner(resize).png" alt="Product 3">
+                <div class="description">
+                    <h2>Canon</h2>
+                    <p> Elevate your photography with Canon's DSLR choices. Merging state-of-the-art technology with user-friendly design, they yield superb image quality and facilitate 4K video recording. Canon's DSLR options are versatile, earning trust from both professionals and photography enthusiasts globally.</p>
+                    <a href="#CanonInfo"><button class="learn-more">Learn More</button></a>
+                    <a href="canon.html"><button class="products">Products</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="prevSlide()">Previous</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+    end-->
+
+    
+    <div class="image-layout">
+        <div class="image-item">
+            <img src="images/Camera-rafiki.png" alt="Image 1">
+            <p>Enhance your shooting experience with our cutting-edge accessories. From tripods that stabilize your frame to high-quality camera bags that safeguard your equipment, we've got you covered. Elevate your creativity with CamShop's selection of top-tier photography essentials.</p>
+        </div>
+    </div>
+
+ 
+    <div class="logos">
+        <div class="logos-slide">
+          <img src="images/Canon logo.png" />
+          <img src="images/Fujifilm-logo.png" />
+          <img src="images/kodak-logo.jpg" />
+          <img src="images/Sony-logo.png" />
+          <img src="images/nikon-logo-1.png" />
+          <img src="images/pentax-logo-png-transparent.png" />
+        </div>
+      </div>
+
+    <!--Category-->
+    <div class="category-heading">
+        <h3>Category</h3>
+    </div>
+    <div class="category-boxes">
+        <a href="#" class="category-box"  id="camera-link">
+            <h3>Camera</h3>
+            <img src="images/Nikon-coolpix (resize).png" alt="Camera">
+            <p>Explore our collection of high-quality cameras that capture moments with precision and clarity.</p>
+        </a>
+        <a href="#" class="category-box" id="lens-link">
+            <h3>Lens</h3>
+            <img src="images/lens(resize).png" alt="Lens">
+            <p>Discover a variety of camera lenses designed to enhance your photography and provide creative versatility.</p>
+        </a>
+        <a href="#" class="category-box" id="accessories-link">
+            <h3>Accessories</h3>
+            <img src="images/cat-access(resize).png" alt="Accessories">
+            <p>Find the perfect accessories to complement your photography setup, from tripods to filters and more.</p>
+        </a>
+    </div>
+    <!--end-->
+    
+    
+    <!--featured products-->
+    <div class="featured-products-section" id="featured">
+        <h2>Featured Products</h2>
+        <div class="featured-products">
+            <!-- Featured Product 1 -->
+            <div class="product" data-productid="1" >
+                <img src="images/Nikon D5600.jpg" alt="Product 1">
+                <h3>Nikon D5600</h3>
+                <p class="price">₱ 32500</p>
+                <p id="product-description">Versatile DSLR with 24.2MP, 39-point autofocus, and a 3.2" touchscreen. Ideal for high-quality images, Full HD video, and wireless sharing.</p>
+                <label for="quantity">Quantity:</label>
+                <div class="specs" style="display: none;">
+                  
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 24.2MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-25,600</li>
+                        <li><strong>Autofocus:</strong> 39-point autofocus system</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 60 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.2-inch vari-angle touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and Bluetooth</li>
+                        <li><strong>Other Features:</strong> Time-lapse recording, 5 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock"></span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 2 -->
+            <div class="product" data-productid="2">
+                <img src="images/Sony a6000.jpg" alt="Product 2">
+                <h3>Sony α6000</h3>
+                <p class="price">₱ 28000</p>
+                <p id="product-description">Compact mirrorless camera with 24.3MP, fast hybrid autofocus, and an electronic viewfinder. Captures stunning images, Full HD video, and features a portable design.</p>
+                <div class="specs" style="display: none;">
+
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 24.3MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-25,600</li>
+                        <li><strong>Autofocus:</strong> Fast hybrid AF with 179 phase-detection points</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 60 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch tilting LCD</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and NFC</li>
+                        <li><strong>Other Features:</strong> 11 fps continuous shooting, electronic viewfinder</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 3 -->
+            <div class="product" data-productid="3">
+                <img src="images/Canon EOS 90D.png" alt="Product 3">
+                <h3>Canon EOS 90D</h3>
+                <p class="price">₱ 95998</p>
+                <p id="product-description">Powerful DSLR with a 32.5MP sensor, 4K video, and a 45-point autofocus system. Balances high-resolution stills and advanced video capabilities.</p>
+                <div class="specs" style="display: none;">
+
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 32.5MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-25,600 (expandable to 51,200)</li>
+                        <li><strong>Autofocus:</strong> 45-point all-cross-type AF system</li>
+                        <li><strong>Video:</strong> 4K UHD at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch vari-angle touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and Bluetooth</li>
+                        <li><strong>Other Features:</strong> 10 fps continuous shooting, optical viewfinder</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="4">
+                <img src="images/nikon d3500.jpg" alt="Product 4" >
+                <h3>Nikon D3500</h3>
+                <p class="price">₱ 28888</p>
+                <p id="product-description">Entry-level DSLR with 24.2MP, 11-point autofocus, and a lightweight design. Perfect for beginners, offering Full HD video recording.
+
+                </p>
+                <div class="specs" style="display: none;">
+
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 24.2MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-25,600</li>
+                        <li><strong>Autofocus:</strong> 11-point autofocus system</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 60 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch fixed LCD</li>
+                        <li><strong>Connectivity:</strong> Bluetooth</li>
+                        <li><strong>Other Features:</strong> 5 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="5">
+                <img src="images/Canon EOS 70D.jpg" alt="Product 5">
+                <h3>Canon EOS 70D</h3>
+                <p class="price">₱ 37996</p>
+                <p id="product-description">Mid-range DSLR featuring 20.2MP, 19-point autofocus, and an articulating touchscreen. Versatile for stills and Full HD video.</p>
+                <div class="specs" style="display: none;">
+
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 20.2MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-12,800 (expandable to 25,600)</li>
+                        <li><strong>Autofocus:</strong> 19-point all-cross-type AF system</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch articulating touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi</li>
+                        <li><strong>Other Features:</strong> 7 fps continuous shooting, Dual Pixel CMOS AF</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="6">
+                <img src="images/Sony-a7-III.jpg" alt="Product 6">
+                <h3>Sony Alpha A7 III</h3>
+                <p class="price">₱ 112999</p>
+                <p id="product-description">Full-frame mirrorless, 24.2MP, 693-point autofocus, 4K video, in-body stabilization, and high-speed shooting.</p>
+                <div class="specs" style="display: none;">
+ 
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 24.2MP Full-frame Exmor R CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-51,200 (expandable to 50-204,800)</li>
+                        <li><strong>Autofocus:</strong> Fast hybrid AF with 693 phase-detection points</li>
+                        <li><strong>Video:</strong> 4K UHD at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch tilting touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and NFC</li>
+                        <li><strong>Other Features:</strong> 10 fps continuous shooting, 5-axis in-body stabilization</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                <button class="view-product">View Product</button>
+
+            </div>
+        </div>
+    </div>  
+    <div class="choose-us-container">
+        <div class="main-title">
+            <h1 class="main-title-text">Why Choose Us</h1>
+            <p>Choose CamShop for uncompromising quality. Our products are meticulously curated to exceed your expectations. </p>
+        </div>
+
+        <div class="choose-us-section">
+            <div class="feature">
+                <div class="icon">&#128230;</div>
+                <h2>Fast & Free Shipping</h2>
+                <p>Swift and secure delivery to your doorstep. We understand the excitement of a new purchase, so we ensure your items reach you in no time, and shipping is on us!</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">&#128722;</div>
+                <h2>Easy to Shop</h2>
+                <p>Simplify your shopping experience with us. Our user-friendly interface and intuitive navigation make finding and ordering your favorite camera gear a breeze.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">&#128276;</div>
+                <h2>24/7 Support</h2>
+                <p>We're here whenever you need us. Our dedicated support team is available round the clock to assist you with any queries or concerns. Your satisfaction is our priority.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">&#128465;</div>
+                <h2>Hassle Free Returns</h2>
+                <p>Not satisfied? No problem. Our hassle-free return process ensures that if your purchase doesn't meet your expectations, you can send it back without any fuss. </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="popup-window" style="display: none;">
+<span class="close-button" onclick="closePopup()">&times;</span>
+    <img id="popup-image" src="" alt="Popup Product">
+    <h3 id="popup-name"></h3>
+    <p id="popup-price"></p>
+    <div id="popup-specs"></div>
+</div>
+
+
+<!-- Accessories section -->
+<div class="content-section" id="accessories-section">
+    <div class="featured-products-section">
+        <h2>Accessories</h2>
+        <div class="featured-products">
+            <!-- Featured Product 1 -->
+            <div class="product" data-productid="7">
+                <img src="images/Samsung 256GB EVO+ microSDXC Memory Card with SD Adapter.webp" alt="Product 7">
+                <h3>Samsung 256GB EVO+ microSDXC Memory Card with SD Adapter</h3>
+                <p class="price">₱ 4000</p>
+                <p id="product-description">High-capacity 256GB microSDXC memory card with SD adapter for reliable storage and fast data transfer.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Capacity:</strong> 256GB</li>
+                        <li><strong>Type:</strong> microSDXC with SD Adapter</li>
+                        <li><strong>Speed Class:</strong> Class 10, UHS-I U3</li>
+                        <li><strong>Read Speed:</strong> Up to 100 MB/s</li>
+                        <li><strong>Write Speed:</strong> Up to 90 MB/s</li>
+                        <li><strong>Compatibility:</strong> Compatible with microSDXC and SDXC devices</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock"></span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 2 -->
+            <div class="product" data-productid="8">
+                <img src="images/JBY Compact Advanced Kit Tripod.webp" alt="Product 8">
+                <h3>JBY Compact Advanced Kit Tripod</h3>
+                <p class="price">₱ 5990</p>
+                <p id="product-description">Compact and versatile tripod kit designed for stability and ease of use, suitable for various shooting scenarios.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> Compact Advanced Kit Tripod</li>
+                        <li><strong>Material:</strong> Aluminum</li>
+                        <li><strong>Maximum Height:</strong> Adjustable</li>
+                        <li><strong>Weight:</strong> Lightweight and portable</li>
+                        <li><strong>Features:</strong> 3-way head, quick-release plate, adjustable legs</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 3 -->
+            <div class="product" data-productid="9">
+                <img src="images/JBY Telepod Sport Telescoping Tripod.webp" alt="Product 9">
+                <h3>JBY Telepod Sport Telescoping Tripod</h3>
+                <p class="price">₱ 2990</p>
+                <p id="product-description">Telescoping tripod designed for sports and action shots, providing flexibility and stability in a portable design.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> Telepod Sport Telescoping Tripod</li>
+                        <li><strong>Material:</strong> High-quality materials</li>
+                        <li><strong>Maximum Height:</strong> Adjustable telescoping design</li>
+                        <li><strong>Weight:</strong> Portable and lightweight</li>
+                        <li><strong>Features:</strong> Versatile, suitable for various shooting scenarios</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="10">
+                <img src="images/PETROL PC 300 Camera Backpack.webp" alt="Product 10">
+                <h3>PETROL PC 300 Camera Backpack</h3>
+                <p class="price">₱ 8600</p>
+                <p id="product-description">Durable camera backpack with a spacious interior, multiple compartments, and padded dividers for secure and organized camera gear storage.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> Camera Backpack</li>
+                        <li><strong>Capacity:</strong> Spacious interior for camera gear and accessories</li>
+                        <li><strong>Material:</strong> Durable and weather-resistant</li>
+                        <li><strong>Features:</strong> Multiple compartments, padded dividers, comfortable straps</li>
+                        <li><strong>Compatibility:</strong> Fits various camera models and accessories</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="11">
+                <img src="images/Kattee Leather Canvas Camera Bag Vintage DSLR SLR Messenger Shoulder Bag.webp" alt="Product 11">
+                <h3>Kattee Leather Canvas Camera Bag Vintage</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Vintage-style messenger shoulder bag made of leather and canvas, designed to carry DSLR and SLR cameras with a timeless aesthetic.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> Messenger Shoulder Bag</li>
+                        <li><strong>Material:</strong> Leather and Canvas</li>
+                        <li><strong>Compatibility:</strong> Fits DSLR and SLR cameras</li>
+                        <li><strong>Features:</strong> Vintage design, adjustable shoulder strap, multiple pockets</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="12">
+                <img src="images/Godox MF R76 Macro Ring Flash.webp" alt="Product 12">
+                <h3>Godox MF R76 Macro Ring Flash</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Macro ring flash designed for close-up photography, providing even illumination for detailed and well-lit macro shots.</p>
+                 <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> Macro Ring Flash</li>
+                        <li><strong>Compatibility:</strong> Suitable for macro photography</li>
+                        <li><strong>Power:</strong> Adjustable power settings</li>
+                        <li><strong>Features:</strong> LED modeling lamp, flexible lighting options</li>
+                        <li><strong>Mount:</strong> Universal hot shoe mount</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                 <button class="view-product">View Product</button>
+
+            </div>
+        </div>
+    </div>  
+</div>
+
+<!-- Add a container for Camera section -->
+<div class="content-section" id="camera-section">
+    <div class="featured-products-section">
+        <h2>Camera</h2>
+        <div class="featured-products">
+            <!-- Featured Product 1 -->
+            <div class="product" data-productid="13">
+                <img src="images/Canon EOS 550D.webp" alt="Product 13">
+                <h3>Canon EOS 550D</h3>
+                <p class="price">₱ 14950</p>
+                <p id="product-description">Entry-level DSLR with an 18.0MP APS-C sensor, versatile ISO range, and user-friendly controls, suitable for photography enthusiasts.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 18.0MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 100-6,400 (expandable to 12,800)</li>
+                        <li><strong>Autofocus:</strong> 9-point autofocus system</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch vari-angle</li>
+                        <li><strong>Connectivity:</strong> None</li>
+                        <li><strong>Other Features:</strong> 3.7 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock"></span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+            <!-- Featured Product 2 -->
+            <div class="product" data-productid="14">
+                <img src="images/Kodak PIXPRO AZ425.webp" alt="Product 14">
+                <h3>Kodak PIXPRO AZ425</h3>
+                <p class="price">₱ 10400</p>
+                <p id="product-description">Compact bridge camera with a 16.15MP CCD sensor, 42x optical zoom, and HD video recording, offering a budget-friendly option for versatile shooting.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 16.15MP 1/2.3-inch CCD sensor</li>
+                        <li><strong>ISO Range:</strong> 80-3,200</li>
+                        <li><strong>Autofocus:</strong> Contrast detection AF</li>
+                        <li><strong>Video:</strong> HD 720p at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch LCD</li>
+                        <li><strong>Connectivity:</strong> None</li>
+                        <li><strong>Other Features:</strong> 5 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+            <!-- Featured Product 3 -->
+            <div class="product" data-productid="15">
+                <img src="images/KODAK PIXPRO AZ901.webp" alt="Product 15">
+                <h3>Kodak PIXPRO AZ901</h3>
+                <p class="price">₱ 24800</p>
+                <p id="product-description">Superzoom bridge camera featuring a 20.68MP BSI CMOS sensor, 90x optical zoom, and 4K UHD video capabilities for capturing distant subjects.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 20.68MP 1/2.3-inch BSI CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 80-3,200</li>
+                        <li><strong>Autofocus:</strong> Contrast detection AF</li>
+                        <li><strong>Video:</strong> 4K UHD at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch articulating LCD</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi</li>
+                        <li><strong>Other Features:</strong> 5 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+
+            <div class="product" data-productid="16">
+                <img src="images/Fujifilm X-S10 Mirrorless Camera.webp" alt="Product 16">
+                <h3>Fujifilm X-S10 Mirrorless Camera</h3>
+                <p class="price">₱ 82000</p>
+                <p id="product-description">Mid-range mirrorless camera with a 26.1MP APS-C sensor, 5-axis in-body image stabilization, and 4K video recording, delivering high-quality results in a compact form.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 26.1MP APS-C X-Trans CMOS 4 sensor</li>
+                        <li><strong>ISO Range:</strong> 160-12,800 (expandable to 80-51,200)</li>
+                        <li><strong>Autofocus:</strong> 425-point hybrid AF system</li>
+                        <li><strong>Video:</strong> 4K UHD at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch vari-angle touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and Bluetooth</li>
+                        <li><strong>Other Features:</strong> 8 fps continuous shooting, in-body stabilization</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+
+            <div class="product" data-productid="17">
+                <img src="images/Fujifilm X-t10.webp" alt="Product 17">
+                <h3>Fujifilm X-t10</h3>
+                <p class="price">₱ 31000</p>
+                <p id="product-description">Mirrorless camera with a 16.3MP APS-C sensor, 77-point hybrid AF system, and Full HD video recording, known for its retro design and portability.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 16.3MP APS-C X-Trans CMOS II sensor</li>
+                        <li><strong>ISO Range:</strong> 200-6,400 (expandable to 100-51,200)</li>
+                        <li><strong>Autofocus:</strong> 77-point hybrid AF system</li>
+                        <li><strong>Video:</strong> Full HD 1080p at 60 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.0-inch tilting LCD</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi</li>
+                        <li><strong>Other Features:</strong> 8 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+
+            <div class="product" data-productid="18">
+                <img src="images/Fujifilm X-T200.webp" alt="Product 18">
+                <h3>Fujifilm X-T200</h3>
+                <p class="price">₱ 57000</p>
+                <p id="product-description">Mirrorless camera featuring a 24.2MP APS-C sensor, vari-angle touchscreen, and 4K video capabilities, suitable for both photography and vlogging.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Sensor:</strong> 24.2MP APS-C CMOS sensor</li>
+                        <li><strong>ISO Range:</strong> 200-12,800 (expandable to 100-51,200)</li>
+                        <li><strong>Autofocus:</strong> 425-point hybrid AF system</li>
+                        <li><strong>Video:</strong> 4K UHD at 30 fps</li>
+                        <li><strong>LCD Screen:</strong> 3.5-inch vari-angle touchscreen</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi and Bluetooth</li>
+                        <li><strong>Other Features:</strong> 8 fps continuous shooting</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                 <button class="view-product">View Product</button>
+            </div>
+        </div>
+    </div>  
+</div>
+<!-- Add a container for Lens section -->
+<div class="content-section" id="lens-section">
+    <div class="featured-products-section">
+        <h2>Lens</h2>
+        <div class="featured-products">
+            <!-- Featured Product 1 -->
+            <div class="product" data-productid="19">
+                <img src="images/Canon RF 100-400mm f5.6-8 IS USM Lens.webp" alt = "Product 19" >
+                <h3>Canon RF 100-400mm f/5.6-8 IS USM Lens</h3>
+                <p class="price">₱ 25000</p>
+                <p id="product-description">Versatile telephoto zoom lens with a focal range of 100-400mm, featuring Image Stabilization (IS) and a fast Ultrasonic Motor (USM) for precision.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 100-400mm</li>
+                        <li><strong>Aperture:</strong> f/5.6-8</li>
+                        <li><strong>Image Stabilization:</strong> Yes</li>
+                        <li><strong>Autofocus:</strong> USM (Ultrasonic Motor)</li>
+                        <li><strong>Compatibility:</strong> Canon RF mount</li>
+                        <li><strong>Features:</strong> Telephoto zoom, versatile focal range</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock"></span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 2 -->
+            <div class="product" data-productid="20">
+                <img src="images/Sony DT 55-200mm f4-5.6 Sam Telephoto Zoom Lens.webp" alt="Product 20">
+                <h3>Sony DT 55-200mm f/4-5.6 Sam Telephoto Zoom Lens</h3>
+                <p class="price">₱ 20000</p>
+                <p id="product-description">Telephoto zoom lens with a focal range of 55-200mm, designed for Sony A-mount cameras, delivering sharp images with smooth autofocus (Sam).</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 55-200mm</li>
+                        <li><strong>Aperture:</strong> f/4-5.6</li>
+                        <li><strong>Autofocus:</strong> Sam (Smooth Autofocus Motor)</li>
+                        <li><strong>Compatibility:</strong> Sony A-mount (DT)</li>
+                        <li><strong>Features:</strong> Telephoto zoom, budget-friendly</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                                 <button class="view-product">View Product</button>
+
+            </div>
+            <!-- Featured Product 3 -->
+            <div class="product" data-productid="21">
+                <img src="images/Viltrox AF 85mm f1.8 Z Lens for Nikon Z.webp" alt="Product 21">
+                <h3>Viltrox AF 85mm f/1.8 Z Lens for Nikon Z</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Fast aperture 85mm lens for Nikon Z-mount cameras, providing a bright f/1.8 aperture for excellent low-light performance and beautiful bokeh.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 85mm</li>
+                        <li><strong>Aperture:</strong> f/1.8</li>
+                        <li><strong>Autofocus:</strong> Yes</li>
+                        <li><strong>Compatibility:</strong> Nikon Z mount</li>
+                        <li><strong>Features:</strong> Fast aperture, suitable for portraits</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                                 <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="22">
+                <img src="images/TTArtisan AF 27mm f2.8 Lens For Sony E Black (Auto Focus).webp" alt="Product 22">
+                <h3>TTArtisan AF 27mm f/2.8 Lens For Sony E Black (Auto Focus)</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Compact 27mm lens for Sony E-mount cameras with autofocus capability, offering a wide-angle perspective and a sleek black design.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 27mm</li>
+                        <li><strong>Aperture:</strong> f/2.8</li>
+                        <li><strong>Autofocus:</strong> Yes</li>
+                        <li><strong>Compatibility:</strong> Sony E-mount</li>
+                        <li><strong>Features:</strong> Wide-angle, compact design</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                                 <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="23">
+                <img src="images/Canon lens FL 135mm 3,5.webp" alt="Product 23">
+                <h3>Canon lens FL 135mm 3.5</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Vintage 135mm prime lens with a manual focus mechanism, known for its distinct focal length and f/3.5 aperture, suitable for portrait photography.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 27mm</li>
+                        <li><strong>Aperture:</strong> f/2.8</li>
+                        <li><strong>Autofocus:</strong> Yes</li>
+                        <li><strong>Compatibility:</strong> Sony E-mount</li>
+                        <li><strong>Features:</strong> Wide-angle, compact design</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                <button class="view-product">View Product</button>
+
+            </div>
+
+            <div class="product" data-productid="24">
+                <img src="images/Canon Ef 40 Mm F2.8 Stm Lens.webp" alt="Product 24">
+                <h3>Canon Ef 40 Mm F/2.8 Stm Lens</h3>
+                <p class="price">₱ 29000</p>
+                <p id="product-description">Compact 40mm prime lens with a wide aperture of f/2.8 and a Stepping Motor (STM) for smooth and quiet autofocus, ideal for a variety of photography styles.</p>
+                <div class="specs" style="display: none;">
+                    <p><strong> Specifications:</strong></p>
+                    <ul>
+                        <li><strong>Focal Length:</strong> 40mm</li>
+                        <li><strong>Aperture:</strong> f/2.8</li>
+                        <li><strong>Autofocus:</strong> STM (Stepping Motor)</li>
+                        <li><strong>Compatibility:</strong> Canon EF mount</li>
+                        <li><strong>Features:</strong> Pancake design, compact and lightweight</li>
+                      </ul>
+                </div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" value="1">
+                <p id="product-stock">Stock: <span id="stock">100</span></p>
+                <button id="add-to-cart" class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+                                                 <button class="view-product">View Product</button>
+
+            </div>
+        </div>
+    </div>  
+</div>
+
+    
+
+  
+    <div class="custom-modal" id="custom-alert">
+        <div class="modal-content">
+            <span class="close" id="close-alert">&times;</span>
+            <p id="alert-message"></p>
+        </div>
+    </div>
+    
+    <!--end-->
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="images/LOGO(Resize).png" alt="CamShop Footer Logo">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#" onclick="showModal('termsModal', event)">Terms of Service</a></li>
+                    <li><a href="#" onclick="showModal('privacyModal', event)">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p>Contact Us</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/camshop" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/camshop" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+                    <a href="mailto:camshop@gmail.com"><img src="images/gmail.png" alt="Gmail"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-about">
+            <h3>About Us</h3>
+            <p>Welcome to CamShop, your one-stop destination for high-quality cameras, lenses, and photography accessories. We are passionate about helping photographers, both beginners and professionals, capture stunning moments with precision and clarity. Our mission is to provide you with top-notch equipment and exceptional customer service to elevate your photography experience.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 CamShop. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Modals -->
+   <!-- Modals -->
+   <div id="termsModal" class="modal terms-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('termsModal')">&times;</span>
+        <h2>Terms of Service</h2>
+        <p>
+            Effective Date: December 1, 2023<br><br>
+            Welcome to CamShop! These Terms of Service outline the rules and regulations for the use of our website.<br><br>
+            <strong>Acceptance of Terms:</strong> By accessing this website, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use our website.<br><br>
+            <strong>Use License:</strong> Permission is granted to temporarily download one copy of the materials on CamShop's website for personal, non-commercial transitory viewing only.<br><br>
+            <strong>Disclaimer:</strong> The materials on CamShop's website are provided on an 'as is' basis. CamShop makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties.<br><br>
+            <strong>Limitations:</strong> In no event shall CamShop or its suppliers be liable for any damages arising out of the use or inability to use the materials on CamShop's website.<br><br>
+            <strong>Revisions and Errata:</strong> The materials appearing on CamShop's website may include technical, typographical, or photographic errors. CamShop does not warrant that any of the materials on its website are accurate, complete, or current.<br><br>
+            <strong>Links:</strong> CamShop has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site.
+        </p>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal privacy-modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p>
+            Effective Date: December 1, 2023<br><br>
+            At CamShop, we take your privacy seriously. This Privacy Policy outlines the types of personal information that is received and collected by CamShop and how it is used.<br><br>
+            <strong>Information Collection:</strong> We may collect personal information such as your name, email address, and billing details when you make a purchase on our website.<br><br>
+            <strong>Use of Information:</strong> We use the collected information for order fulfillment, communication, and to improve our services.<br><br>
+            <strong>Security:</strong> We take reasonable steps to protect your personal information from unauthorized access or disclosure.<br><br>
+            <strong>Cookies:</strong> CamShop uses cookies to enhance your user experience. You can choose to disable cookies through your browser settings.<br><br>
+            <strong>Third-Party Services:</strong> We may use third-party services for payment processing and analytics. These services have their own privacy policies.<br><br>
+            <strong>Changes to Privacy Policy:</strong> CamShop reserves the right to update or change this Privacy Policy at any time.
+        </p>
+    </div>
+</div>
+    <script>
+         document.getElementById('shop-now-btn').addEventListener('click', function() {
+        // Scroll to the "Featured Products" section smoothly
+        document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+    });
+         document.addEventListener("DOMContentLoaded", function () {
+    var parallaxContainer = document.querySelector(".parallax-container");
+
+    function updateParallax() {
+      var scrollTop = window.scrollY;
+      parallaxContainer.style.transform = "translateY(" + scrollTop * 0.4 + "px)";
+    }
+
+    window.addEventListener("scroll", updateParallax);
+  });
+
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logos").appendChild(copy);
+var logosContainer = document.querySelector(".logos");
+var logosSlide = document.querySelector(".logos-slide");
+
+function cloneLogos() {
+  var copy = logosSlide.cloneNode(true);
+  logosContainer.appendChild(copy);
+}
+
+cloneLogos();
+    //variable lang para sa kung nakalogin ba yung user
+const isLoggedIn = true; 
+
+// pang update ng login logout
+function updateLoginLink() {
+    const loginLink = document.getElementById('login-link');
+
+    if (isLoggedIn) {
+        loginLink.textContent = 'Log Out';
+       
+        loginLink.addEventListener('click', function (event) {
+            if (loginLink.textContent === 'Log Out') {
+                event.preventDefault(); 
+                const confirmLogout = confirm("Are you sure you want to log out?");
+                if (confirmLogout) {
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+    } else {
+        loginLink.textContent = 'Log In';
+        // Magging login naka lagay
+        loginLink.href = 'login.html'; 
+    }
+}
+
+updateLoginLink();
+
+const mainContent = document.getElementById("main-content");
+const accessoriesSection = document.getElementById("accessories-section");
+const cameraSection = document.getElementById("camera-section");
+const lensSection = document.getElementById("lens-section");
+const accessoriesLink = document.getElementById("accessories-link");
+const cameraLink = document.getElementById("camera-link");
+const lensLink = document.getElementById("lens-link");
+const homeLink = document.getElementById("home-link");
+const categoryBoxes = document.querySelectorAll(".category-box");
+const cartLink = document.getElementById("cart-link");
+const cartSection = document.getElementById("cart-section");
+const checkoutButton = document.getElementById("checkout-button");
+const checkoutSection = document.getElementById("checkout-section");
+
+
+checkoutButton.addEventListener("click", function () {
+  showSection(checkoutSection);
+});
+homeLink.addEventListener("click", function () {
+  showSection(mainContent);
+});
+cartLink.addEventListener("click", function(){
+    showSection(cartSection);
+})
+accessoriesLink.addEventListener("click", function () {
+  showSection(accessoriesSection);
+});
+
+cameraLink.addEventListener("click", function () {
+  showSection(cameraSection);
+});
+
+lensLink.addEventListener("click", function () {
+  showSection(lensSection);
+});
+
+// para lahat to maback sa browser back button
+function showSectionAndUpdateHistory(section) {
+        const sectionIds = ["checkout-section", "accessories-section", "camera-section", "lens-section", "main-content", "cart-section",];
+
+        sectionIds.forEach((sectionId) => {
+            const currentSection = document.getElementById(sectionId);
+            currentSection.style.display = sectionId === section ? "block" : "none";
+        });
+
+      
+        const stateObj = { section: section };
+        history.pushState(stateObj, "", "#" + section); 
+    }
+
+
+    window.addEventListener("popstate", function (event) {
+        const sectionId = location.hash.substring(1); 
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            showSectionAndUpdateHistory(sectionId);
+        }
+    });
+
+    // hide yung ibang section at papakita yung main content
+    const initialSection = location.hash.substring(1); 
+    showSectionAndUpdateHistory(initialSection || "main-content");
+
+  categoryBoxes.forEach(function (box) {
+  box.addEventListener("click", function () {
+    // category box
+    const categoryID = box.getAttribute("id");
+
+    // Hide lahat ng sections
+    checkoutSection.style.display = "none";
+    accessoriesSection.style.display = "none";
+    cameraSection.style.display = "none";
+    lensSection.style.display = "none";
+    mainContent.style.display = "none";
+    cartSection.style.display = "none";
+    // category
+    if (categoryID === "accessories-link") {
+      showSection(accessoriesSection);
+    } else if (categoryID === "camera-link") {
+      showSection(cameraSection);
+    } else if (categoryID === "lens-link") {
+      showSection(lensSection);
+    }
+  });
+});
+
+// para ma show yung section at mahide yung iba
+function showSection(section) {
+    checkoutSection.style.display = "none";
+
+  accessoriesSection.style.display = "none";
+  cameraSection.style.display = "none";
+  lensSection.style.display = "none";
+  mainContent.style.display = "none";
+  cartSection.style.display = "none";
+  section.style.display = "block";
+}
+
+// ito yung main content muna naka show pag ka start ng site
+checkoutSection.style.display = "none";
+accessoriesSection.style.display = "none";
+cameraSection.style.display = "none";
+lensSection.style.display = "none";
+mainContent.style.display = "block";
+cartSection.style.display = "none";
+    </script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="swiper.min.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>
+

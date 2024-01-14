@@ -1,0 +1,1270 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,800&display=swap');
+html{
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+body{
+    font-family: 'Poppins';
+}
+/* start ng header */
+header {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px 0; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo img {
+    width: 100px; 
+    cursor: pointer;
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline; 
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none; 
+    color: #fff; 
+}
+
+
+nav a:hover {
+    color: #ff6600; 
+}
+.profile-icon {
+    font-size: 24px; /* Adjust the size as needed */
+    text-decoration: none; /* Remove underlines for anchor element */
+    margin-right: 10px; /* Add spacing to separate it from other header elements */
+    color: #fff; /* Icon color */
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+   color: #ff6600;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    right: 0;
+}
+
+/* Adjust positioning of the dropdown button */
+.dropdown {
+    display: inline-block;
+    margin-right: 20px; /* Adjust as needed for spacing */
+}
+
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        z-index: 1;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .burger-icon {
+        display: flex;
+        cursor: pointer;
+        color: #fff;
+        font-size: 24px;
+        padding-right: 20px;
+    }
+    .dropbtn{
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        z-index: 1;
+    }
+    .dropdown-content{
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        text-align: center;
+        top: 273px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        z-index: 1;
+    }
+}
+
+/* Additional style to hide burger icon by default on larger screens */
+.burger-icon {
+    display: none;
+}
+
+/* Adjust this media query based on your design needs */
+@media screen and (max-width: 768px) {
+    .burger-icon {
+        display: flex;
+        padding-right: 20px;
+
+    }
+}
+
+
+/* Existing styles (header, logo, nav, etc.) remain the same */
+
+/* end */
+
+
+/* slider */
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+ 
+}
+
+.slider {
+    display: flex;
+    width: 300%; /* Para isa lang ma display */
+    transition: transform 0.5s;
+}
+
+.slide {
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    opacity: 0; /* Initial opacity set to 0 for the fade-in effect */
+    transform: translateY(-20px); /* Initial position above its final position */
+
+    /* Add animation properties */
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Add keyframes for the slide-in animation */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 60vh; /* default nito 60 */
+    float: left; /* Float the image to the left */
+    margin-right: 20px; /* Add some margin to separate image from text */
+}
+
+.description {
+    margin-top: 250px;
+    text-align: left; /* Align text to the left */
+    flex: 1; /* Take remaining space */
+}
+
+.slide h2 {
+    font-size: 30px;
+}
+
+.slide p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.learn-more,
+.products {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.learn-more:hover,
+.products:hover {
+    background-color: #e65000;
+}
+/* Add your existing CSS styles here */
+
+/* Additional styles for manual controls */
+.controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.controls button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.controls button:hover {
+    background-color: #e65000;
+}
+
+/* responsive ng slider */
+
+/* responsive ng slider */
+
+/* responsive ng slider */
+
+/* responsive ng slider */
+
+@media screen and (max-width: 768px) {
+    .slider {
+        width: 100%;
+        padding-top: 175px;
+    }
+
+    .slide {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Stack items vertically on small screens */
+        padding: 10px;
+        text-align: center;
+    }
+
+    .slide:first-child {
+        display: block; /* Ensure the first slide is initially visible on small screens */
+    }
+
+    img {
+        max-height: 40vh;
+        float: none; /* Reset float for small screens */
+        margin-right: 0; /* Reset margin for small screens */
+    }
+    
+    .description {
+        margin-top: 20px; /* Adjust the margin-top for better spacing on small screens */
+    }
+}
+
+
+
+
+/* end */
+
+
+/*video
+.video-section {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.video-container {
+    flex: 1;
+    padding: 20px;
+}
+
+iframe {
+    width: 100%;
+    height: 450px; /* 315px default nito
+    border-radius: 20px;
+}
+
+.brand-introduction {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+responsive ng video 
+@media (max-width: 768px) {
+    .video-section {
+        flex-direction: column;
+        padding-top: 100px; /*wala to sa default (pwedeng wala pwedeng meron)
+    }
+
+    .video-container {
+        width: 420px; /*default 100%
+    }
+
+    .right-video {
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+    }
+}
+*/
+/* Info tungkol sa camera 
+#SonyInfo, #NikonInfo, #CanonInfo {
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section h2 {
+    font-size: 25px;
+    margin-right: 20px;
+    text-align: center; 
+ 
+}
+section p {
+    font-size: 21px;
+    word-wrap: break-word;
+    flex: 1;
+    text-align: center; 
+}
+*/
+
+/* responsive ng info sa camera 
+@media (max-width: 768px) {
+    section {
+        flex-direction: column;
+        text-align: center; /
+    } 
+    section img {
+        max-width: 100%;
+        margin-bottom: 10px; 
+    }  
+    section h2 {
+        margin: 10px 0; 
+    }
+}
+end*/
+
+/* category */
+.category-heading{
+    text-align: center;
+    font-size: 30px;
+}
+.category-boxes {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.category-box { 
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease;
+    margin: 10px;
+}
+
+.category-box:hover {
+    transform: scale(1.05);
+}
+
+.category-box h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.category-box img {
+    max-width: 100px;
+    margin: 10px auto;
+}
+
+.category-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* responsive ng category */
+@media (max-width: 768px) {
+    .category-box {
+        width: calc(50% - 20px);
+    }
+}
+@media (max-width: 480px) {
+    .category-box {
+        width: calc(100% - 20px);
+    }
+}
+
+
+/*featured products*/
+.featured-products-section {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.featured-products-section h2{
+    font-size: 30px;
+}
+.featured-products {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.product {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease;
+    margin: 10px;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.product img {
+    max-width: 100px;
+    margin: 10px auto;
+}
+
+.product p {
+    font-size: 16px;
+    color: #666;
+}
+.product button {
+    width: 150px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* Added margin */
+}
+
+.product button:hover {
+    background-color: #e65000;
+}
+label{
+    font-size: 15px;
+}
+/* Responsive ng featured products */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px);
+    }
+  
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px);
+    }
+}
+
+
+/*end*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.footer-contact {
+    text-align: center;
+    padding: 0 20px;
+}
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+}
+.social-icons img{
+    width: 18px;
+}
+.footer-about {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.footer-about h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+@media (max-width: 768px) {
+    .footer-logo img {
+        width: 80px;
+    }
+
+    .footer-links li {
+        margin-right: 10px;
+    }
+
+    .footer-about {
+        padding: 15px;
+    }
+
+    .footer-about h3 {
+        font-size: 20px;
+    }
+
+    .footer-about p {
+        font-size: 14px;
+    }
+}
+/* modal to*/
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#alert-message {
+    font-size: 18px;
+}
+
+
+/* cart sidebar 
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f2f2f2;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align: center; 
+}
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar a:hover {
+    color: #007bff;
+}
+.sidebar h2 {
+    text-align: center;
+}
+*/
+#checkout-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+#checkout-button:hover {
+    background-color: #e65000;
+}
+
+
+/* Checkout Modal 
+.custom-modal-checkout {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+#checkout-modal {
+    text-align: center; 
+}
+
+#product-details {
+    text-align: left;
+    display: inline-block; 
+}
+
+#product-details p {
+    margin: 0; 
+    padding-left: 20px; 
+    text-align: left; 
+}
+
+.modal-content-checkout {
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    width: 70%; 
+}
+
+.close {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Payment Method Options 
+input[type="radio"] {
+    margin-right: 1px;
+}
+
+#payment-inputs {
+    display: none;
+    
+}
+#customer-name, #contact-number {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+Shipping Address Input 
+#shipping-address {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Place Order Button 
+#place-order {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#place-order:hover {
+    background-color: #e65000;
+}
+
+/* Responsive Styles 
+@media (max-width: 768px) {
+    .modal-content-checkout {
+        width: 90%; /* Adjust the width for smaller screens 
+    }
+}
+*/
+
+/* Style for the profile icon */
+
+
+#cart-section{
+    height: 55.8vh;
+}
+
+.cart-item-image {
+    max-width: 50px; 
+    max-height: 50px; 
+    margin-right: 5px; 
+}
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-table img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.cart-table td {
+    vertical-align: middle;
+}
+
+
+/* Checkout Section */
+#checkout-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+/* Customer Information */
+.customer-info label,
+.billing-details label,
+.mode-of-payment label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.customer-info input,
+.billing-details input,
+.billing-details select,
+.mode-of-payment select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* Your Order  */
+.your-order {
+    float: right;
+    width: 40%; 
+    margin-right: 70px;
+}
+
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+}
+
+
+/* Billing Details  */
+.billing-details,
+.mode-of-payment {
+    width: 50%; 
+    float: left;
+    box-sizing: border-box;
+    padding-right: 20px; 
+}
+
+.billing-details h3,
+.mode-of-payment h3 {
+    margin-top: 0;
+}
+
+
+#placeOrderButton {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    clear: right;
+}
+
+#placeOrderButton:hover {
+    background-color: #ff6600; 
+}
+
+
+/* Responsive*/
+@media screen and (max-width: 600px) {
+    .billing-details,
+    .mode-of-payment,
+    .your-order {
+        width: 100%;
+        float: none;   
+    }
+    #checkout-section{
+        height: 150vh;
+    }
+}
+
+/*popup*/
+#popup-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+#popup-image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+#popup-specs {
+    margin-top: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .logos {
+    overflow: hidden;
+    padding: 60px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .logos:before,
+  .logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+  }
+  
+  .logos:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  }
+  
+  .logos:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  }
+  
+  .logos:hover .logos-slide {
+    animation-play-state: paused;
+  }
+  
+  .logos-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+  }
+  
+  .logos-slide img {
+    height: 75px;
+    margin: 0 40px;
+  }
+
+  .choose-us-container {
+    text-align: center;
+}
+
+.choose-us-section {
+    max-width: 800px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature {
+    flex-basis: 48%;
+    margin-bottom: 30px;
+    text-align: left;
+    /* Set font color to white */
+}
+
+.feature h2 {
+    color: #333; /* Reset color for feature headings */
+    text-align: center; /* Center text on smaller screens */
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center; /* Center icon on smaller screens */
+}
+
+.main-title p, .feature p {
+    color: #666;
+}
+
+/* Style for the main title */
+.main-title {
+    color: #333; /* Set font color to dark gray */
+    margin-bottom: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .feature {
+        flex-basis: 100%;
+    }
+
+    .icon,
+    .feature h2,
+   .feature p {
+        text-align: center; /* Center icon and heading on smaller screens */
+    }
+}
+
+/* Parallax container styles 
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px; /* Set the desired height of your parallax section 
+  }
+  
+  /* Parallax background image styles 
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-1px) scale(1.5);
+  }
+  
+  /* Main content styles to overlay on the parallax background */
+  .parallax-content {
+    position: relative;
+    z-index: 2;
+    color: #fff; /* Set your text color */
+    text-align: center;
+    padding: 50px;
+  }
+  
+  /* Apply overlay to improve text visibility 
+  .parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Set your desired overlay color and opacity 
+  }
+  */
+
+/*intro */
+
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     height: 65vh;/* Adjust the height as needed */
+    margin: 0 auto; /* This centers the container horizontally */
+    max-width: 1300px;
+    padding: 50px;
+    width: 100%;
+}
+
+
+  .content {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+
+ .container h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+
+ .container p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background-color: #e65000;
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .camera-3d {
+    perspective: 1300px; /*default 1k*/
+    transform-style: preserve-3d;
+  }
+
+  .camera-3d img {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    transform: rotateY(-45deg);
+    transition: transform 0.5s;
+  }
+
+  .camera-3d:hover img {
+    transform: rotateY(0deg);
+  }
+
+  @media only screen and (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .content {
+      text-align: left;
+    }
+  }
+
+
+  .image-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.image-item {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 80%; /* Set a maximum width for the content */
+}
+
+.image-item img {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.image-item p {
+    font-size: 24px;
+    margin: 0;
+    word-wrap: break-word;
+    white-space: normal; /* Add this property */
+
+}
+
+@media (min-width: 600px) {
+    .image-item {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; /* Align items in the center vertically */
+        text-align: left;
+    }
+
+    .image-item img {
+        margin-bottom: 0;
+        margin-right: 10px; /* Add some spacing between the image and text */
+    }
+
+    .image-item p {
+        max-width: 60%; /* Adjust the maximum width for the text */
+        font-size: 20px; /* Adjust the font size for better responsiveness */
+    }
+}
+/* Add this to your existing CSS or create a new CSS file */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    max-width: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}

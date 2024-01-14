@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+        
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,800&display=swap');
+html{
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+body{
+    font-family: 'Poppins';
+}
+/* start ng header */
+header {
+    background-color: #333; /* Background color for the header */
+    color: #fff; /* Text color for header links */
+    padding: 10px 0; /* Padding around the header content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style for the logo */
+.logo img {
+    width: 100px; /* Adjust the width of the logo as needed */
+    cursor: pointer;
+}
+
+/* Style for the navigation links */
+nav ul {
+    list-style: none; /* Remove bullet points from the list */
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline; /* Display the list items horizontally */
+    margin-right: 20px; /* Spacing between list items */
+}
+
+nav a {
+    text-decoration: none; 
+    color: #fff; 
+}
+
+
+nav a:hover {
+    color: #ff6600; 
+}
+/* end ng header */ 
+  
+
+
+/* responsive ng header */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo img {
+        width: 80px; 
+        margin-bottom: 10px;
+    }
+
+    nav li {
+        margin: 10px 0;
+        padding: 10px;
+    }
+}
+/* end */
+
+
+
+/* slider */
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    width: 300%; /* Para isa lang ma display */
+    transition: transform 0.5s;
+}
+
+.slide {
+    width: 33.33%; /* Para isa lang ma display */
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 60vh; /* default nito 60 */
+}
+
+.slide h2{
+    font-size: 30px;
+}
+.slide p{
+    font-size: 20px;
+    line-height: 1.5;
+}
+.learn-more,
+.products{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.learn-more:hover,
+.products:hover {
+    background-color: #e65000;
+}
+
+.products a{
+    text-decoration: none;
+    color: #fff;
+}
+/* responsive ng slider */
+
+@media (max-width: 768px) {
+    .slider {
+        width: 100%;
+        padding-top: 175px;
+    }
+
+    .slide {
+        width: 100%;
+        display: none;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .slide:first-child {
+        display: block;
+    }
+
+    img {
+        max-height: 40vh;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+/* end */
+
+
+/*video*/
+.video-section {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.video-container {
+    flex: 1;
+}
+
+iframe {
+    width: 100%;
+    height: 450px; /* 315px default nito*/
+    border-radius: 20px;
+}
+
+.brand-introduction {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* responsive ng video */
+@media (max-width: 768px) {
+    .video-section {
+        flex-direction: column;
+        padding-top: 100px; /*wala to sa default (pwedeng wala pwedeng meron)*/
+    }
+
+    .video-container {
+        width: 420px; /*default 100%*/
+    }
+
+    .right-video {
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+    }
+}
+
+/* Info tungkol sa camera */
+#SonyInfo, #NikonInfo, #CanonInfo {
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section h2 {
+    font-size: 25px;
+    margin-right: 20px;
+    text-align: center; 
+ 
+}
+section p {
+    font-size: 21px;
+    word-wrap: break-word;
+    flex: 1;
+    text-align: center; 
+}
+
+
+/* responsive ng info sa camera */
+@media (max-width: 768px) {
+    section {
+        flex-direction: column;
+        text-align: center; /
+    } 
+    section img {
+        max-width: 100%;
+        margin-bottom: 10px; 
+    }  
+    section h2 {
+        margin: 10px 0; 
+    }
+}
+
+
+/* category */
+.category-heading{
+    text-align: center;
+    font-size: 30px;
+}
+.category-boxes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.category-box { 
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease;
+    margin: 10px;
+}
+
+.category-box:hover {
+    transform: scale(1.05);
+}
+
+.category-box h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.category-box img {
+    max-width: 100px;
+    margin: 10px auto;
+}
+
+.category-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* responsive ng category */
+@media (max-width: 768px) {
+    .category-box {
+        width: calc(50% - 20px);
+    }
+}
+@media (max-width: 480px) {
+    .category-box {
+        width: calc(100% - 20px);
+    }
+}
+
+
+/*featured products*/
+.featured-products-section {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.featured-products-section h2{
+    font-size: 30px;
+}
+.featured-products {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.product {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease;
+    margin: 10px;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.product img {
+    max-width: 100px;
+    margin: 10px auto;
+}
+
+.product p {
+    font-size: 16px;
+    color: #666;
+}
+.product button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* Added margin */
+}
+
+.product button:hover {
+    background-color: #e65000;
+}
+/* Responsive ng featured products */
+@media (max-width: 768px) {
+    .product {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        width: calc(100% - 20px);
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #f5f5f5;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 60%;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #e65000;
+}
+
+/*end*/
+
+
+
+
+
+
+
+    </style>
+    <header>
+        <div class="logo">
+           <a href="index.html"><img src="images/LOGO(Resize).png" alt="logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="camera.html">Camera</a></li>
+                <li><a href="lens.html">Lens</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!--slider sa simula-->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="images/sonybanner(resize).png" alt="Product 1">
+                <div class="description">
+                    <h2>Sony</h2>
+                    <p> Dive into the world of photography with Sony's mirrorless devices. They offer high-resolution imaging, low-light prowess, and advanced speed, catering to both enthusiasts and professionals. Boasting advanced autofocus systems and 4K video features, Sony's mirrorless gear is a versatile tool for artistic pursuits.</p>
+                    <a href="#SonyInfo"><button class="learn-more">Learn More</button></a>
+                    <button class="products">Products</button>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/nikonbanner(resize).png" alt="Product 2">
+                <div class="description">
+                    <h2>Nikon</h2>
+                    <p>Set your creativity free with Nikon's DSLR lineup. Featuring high-megapixel sensors, advanced autofocus capabilities, and 4K UHD video support, Nikon's DSLR range is a reliable companion for photographic journeys. With rugged builds and intuitive controls, they elevate your photography experience.
+                    </p>
+                    <a href="#NikonInfo"><button class="learn-more">Learn More</button></a>
+                    <button class="products">Products</button>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/canonbanner(resize).png" alt="Product 3">
+                <div class="description">
+                    <h2>Canon</h2>
+                    <p> Elevate your photography with Canon's DSLR choices. Merging state-of-the-art technology with user-friendly design, they yield superb image quality and facilitate 4K video recording. Canon's DSLR options are versatile, earning trust from both professionals and photography enthusiasts globally.</p>
+                    <a href="#CanonInfo"><button class="learn-more">Learn More</button></a>
+                    <button class="products">Products</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end-->
+ 
+
+
+
+
+    <!--video-->
+    <section class="video-section">
+        <div class="video-container">
+            <iframe width="250" height="315" src="https://www.youtube.com/embed/epF0kLYSNkU?si=Fsr4JKG3bwaskQl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="brand-introduction">
+            <h3>Introducing Alpha 6700 | Sony</h3>
+            <p>
+                Introducing the Alpha 6700, the latest marvel from Sony's Alpha series. Designed to empower photographers and videographers with unparalleled performance and creative possibilities, the α6700 is a game-changer. With its cutting-edge technology, superior image quality, and versatile features, this camera is set to redefine your photographic journey. Whether you're capturing stunning stills or cinematic videos, the α6700 is your ideal companion. Elevate your photography to new heights with Sony's Alpha 6700.
+            </p>
+        </div>
+    </section>  
+    <section class="video-section right-video">
+        <div class="brand-introduction ">
+            <h3>Introducing D850 | Nikon</h3>
+            <p>
+                Discover the Nikon D850, a masterpiece designed to empower photographers and videographers with unparalleled performance and creative possibilities. With cutting-edge technology, superior image quality, and versatile features, the D850 is set to redefine your photographic journey. Whether you're capturing stunning stills or cinematic videos, the D850 is your ideal companion. Elevate your photography to new heights with Nikon's D850.
+            </p>
+        </div>
+        <div class="video-container">
+            <iframe width="250" height="315" src="https://www.youtube.com/embed/nHb7zAHmqBg?si=NrF3BZ-CaCu7GmML" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section class="video-section">
+        <div class="video-container">
+            <iframe width="250" height="315" src="https://www.youtube.com/embed/Lv6zLVjIOto?si=4nljU6bh47rf4Xfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="brand-introduction">
+            <h3>Introducing EOS R6 | Canon</h3>
+            <p>
+                Explore the Canon EOS R6, a powerful tool designed to empower photographers and videographers with unparalleled performance and creative possibilities. With cutting-edge technology, superior image quality, and versatile features, the EOS R6 is set to redefine your photographic journey. Whether you're capturing stunning stills or cinematic videos, the EOS R6 is your ideal companion. Elevate your photography to new heights with Canon's EOS R6.
+            </p>
+        </div>
+    </section>
+    <!--end-->
+
+      <!-- Info tungkol sa sony, nikon, canon -->
+      <section id="SonyInfo">
+        <img src="images/SonyInfo2-PhotoRoom.png-PhotoRoom.png" alt="Sony Camera">
+        <h2>SONY</h2>
+        <p>Sony is another Japanese electronics company that has made significant strides in the camera industry. Sony produces a diverse line of cameras, including digital compact cameras, mirrorless cameras, and camcorders. Sony's mirrorless cameras, in particular, have gained popularity for their innovative technology, such as the use of full-frame sensors and advanced autofocus systems. Sony cameras are widely used in both photography and videography and are known for their high-quality sensors, excellent low-light performance, and video recording capabilities.</p>      
+    </section>   
+    <section id="NikonInfo">
+        <img src="images/NikonInfo-removebg-preview.png" alt="Nikon Camera">
+        <h2>NIKON</h2>
+        <p>Nikon is a Japanese multinational corporation known for its imaging and optical products, including cameras and camera lenses. Nikon cameras are popular for their quality and reliability, and they cater to both amateur and professional photographers. Nikon offers a wide range of camera models, from compact point-and-shoots to advanced DSLR and mirrorless cameras. These cameras are widely used for photography and videography and are known for their high-quality image sensors and advanced features.</p>
+        
+    </section>    
+    <section id="CanonInfo">
+        <img src="images/CanonInfo-removebg-preview.png" alt="Canon Camera">
+        <h2>CANON</h2>
+        <p>Canon is a Japanese multinational corporation known for its imaging and optical products, including cameras and camcorders. Canon cameras are well-regarded for their quality and versatility. They offer a broad range of cameras, from compact point-and-shoots to advanced DSLR and mirrorless models. Canon cameras are used by photographers and videographers of all levels, and they are known for their reliable performance, user-friendly interfaces, and a wide selection of compatible lenses and accessories. Canon is a popular choice for many professionals and enthusiasts in the photography and videography fields.</p>
+    </section>
+    <!--end-->
+
+
+    <!--Category-->
+    <div class="category-heading">
+        <h3>Category</h3>
+    </div>
+    <div class="category-boxes">
+        <a href="camera.html" class="category-box">
+            <h3>Camera</h3>
+            <img src="images/Nikon-coolpix (resize).png" alt="Camera">
+            <p>Explore our collection of high-quality cameras that capture moments with precision and clarity.</p>
+        </a>
+        <a href="lens.html" class="category-box">
+            <h3>Lens</h3>
+            <img src="images/lens(resize).png" alt="Lens">
+            <p>Discover a variety of camera lenses designed to enhance your photography and provide creative versatility.</p>
+        </a>
+        <a href="accessories.html" class="category-box">
+            <h3>Accessories</h3>
+            <img src="images/cat-access(resize).png" alt="Accessories">
+            <p>Find the perfect accessories to complement your photography setup, from tripods to filters and more.</p>
+        </a>
+    </div>
+    <!--end-->
+    
+    
+    <!--featured products-->
+    <div class="featured-products-section">
+        <h2>Featured Products</h2>
+        <div class="featured-products">
+            <!-- Featured Product 1 -->
+            <div class="product" data-productid="1">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Nikon</h3>
+                <p class="price">₱ 25.000.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Featured Product 2 -->
+            <div class="product" data-productid="2">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Sony</h3>
+                <p class="price">₱ 20.000.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            <!-- Featured Product 3 -->
+            <div class="product" data-productid="3">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Canon</h3>
+                <p class="price">₱ 29.000.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modal-product-image" src="" alt="Product">
+            <h3 id="modal-product-name">Product Name</h3>
+            <p class="modal-price" id="modal-product-price">$0.00</p>
+            <p id="modal-product-description">gago.</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </div>
+    
+    <!--end-->
+    
+    <script>
+            // buy now
+    // Update the event listener for "Buy Now" button clicks
+buyNowButton.addEventListener("click", function () {
+  const productName = product.querySelector("h3").textContent;
+  const productPriceText = product.querySelector(".price").textContent;
+  const productPrice = parseFloat(productPriceText.replace("₱", "").trim()) / 1000;
+  const selectedQuantity = parseInt(quantityInput.value);
+  const availableStock = parseInt(stockElement.textContent);
+
+  if (selectedQuantity === 0 || selectedQuantity > availableStock) {
+    if (!viewMode) {
+      // User is not in View Mode
+      showAlert('Invalid quantity or product out of stock.');
+    } else {
+      // User is in View Mode
+      alert('You need to log in first.');
+    }
+  } else {
+    if (viewMode) {
+      // User is in View Mode
+      alert('You need to log in first.');
+    } else {
+      // Continue with cart functionality (in this case, for Buy Now)
+      showAlert(`Thank you for purchasing! ${selectedQuantity} ${productName} for ₱${(selectedQuantity * productPrice * 1000).toLocaleString()}`);
+
+      stock[productId] -= selectedQuantity;
+      stockElement.textContent = stock[productId];
+
+      quantityInput.value = 0;
+    }
+  }
+ });
+
+        /*let cart = [];
+let total = 0;
+
+function addToCart(productId) {
+    // Add product to cart (you can implement this part)
+    // Example: cart.push({ id: productId, name: "Camera Model X", price: 599.99 });
+    
+    // Update total
+    total += 599.99; // Example price
+    
+    // Update the cart UI
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    // Clear the cart
+    cartItems.innerHTML = "";
+
+    // Populate the cart
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+    });
+
+    // Update the total
+    cartTotal.textContent = total.toFixed(2);
+}
+
+function checkout() {
+    // Implement checkout functionality here
+    // You can send the cart data to a server for processing, for example.
+    alert("Checkout clicked. Total: $" + total.toFixed(2));
+}
+*/
+
+/* let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let slides = document.querySelectorAll('.slide');
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = 'block';
+    setTimeout(showSlides, 2000); // Change slide every 2 seconds
+}
+*/
+
+
+/*slider*/
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+let slideIndex = 0;
+
+function showSlide(index) {
+    slides[slideIndex].style.display = 'none';
+    slideIndex = index;
+    slides[slideIndex].style.display = 'block';
+}
+
+function autoSlide() {
+    slides[slideIndex].style.display = 'none';
+
+    if (slideIndex < slides.length - 1) {
+        slideIndex++;
+    } else {
+        slideIndex = 0; // Reset to the first slide
+    }
+
+    slides[slideIndex].style.display = 'block';
+}
+setInterval(autoSlide, 8000);
+/*end*/
+
+
+
+
+
+/* video */
+// Get references to the button and video section
+const learnMoreButton = document.getElementById('learn-more-button');
+const videoSection = document.querySelector('.video-section');
+const videoFrame = document.getElementById('video-frame');
+
+// Add a click event listener to the "Learn More" button
+/*learnMoreButton.addEventListener('click', function() {
+    // Toggle the video section's visibility
+    if (videoSection.style.display === 'none' || videoSection.style.display === '') {
+        videoSection.style.display = 'block';
+        // Set the YouTube video source (replace with your video's URL)
+        videoFrame.src = 'https://www.youtube.com/embed/VIDEO_ID';
+    } else {
+        videoSection.style.display = 'none';
+        // Pause the video when hiding the section (optional)
+        videoFrame.src = '';
+    }
+});
+
+/*end*/
+
+// Get the modal and close button
+const modal = document.getElementById("productModal");
+const closeModal = document.getElementsByClassName("close")[0];
+
+// Get all products
+const products = document.querySelectorAll(".product");
+
+// Add click event listeners to each product
+products.forEach((product) => {
+    product.addEventListener("click", function () {
+        // Get product details
+        const productId = product.getAttribute("data-productid");
+        const productName = product.querySelector("h3").textContent;
+        const productPrice = product.querySelector(".price").textContent;
+        const productImage = product.querySelector("img").src;
+        const productDescription = "g."; // Replace with actual description
+
+        // Set modal content
+        document.getElementById("modal-product-name").textContent = productName;
+        document.getElementById("modal-product-price").textContent = productPrice;
+        document.getElementById("modal-product-image").src = productImage;
+        document.getElementById("modal-product-description").textContent = productDescription;
+
+        // Display the modal
+        modal.style.display = "block";
+    });
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+// Close the modal when clicking outside the modal
+window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
+
+
+
+
+
+
+    </script>
+
+
+    <script src="swiper.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

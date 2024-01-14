@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CamShop</title>
+</head>
+<body>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e65000, #333);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .loginbtn {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .loginbtn:hover {
+            background-color: #e65000;
+        }
+        #view-mode-button{
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+        #view-mode-button:hover{
+            background-color: #e65000;
+        }
+        #login-message {
+            margin-top: 10px;
+            color: #ff3333;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        a {
+            color: #e65000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        .show-password-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .show-password-label input {
+            margin-right: 5px;
+        }
+
+        .show-password-label label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .show-password-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .show-password-label input[type="checkbox"] + label:before {
+
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+    </style>
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Email Address">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Password">
+                <div class="show-password-label">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Show Password</label>
+                </div>
+            </div>
+            <button type="submit" class="loginbtn">Login</button>
+        </form>
+        <p id="login-message"></p>
+        <p>Don't have an account? <a href="/signup.html">Click here</a> to sign up.</p>
+        <button id="view-mode-button">Guest Mode</button>
+    </div>
+
+    <script>
+const loginForm = document.getElementById("login-form");
+const passwordInput = document.getElementById("password");
+const showPasswordCheckbox = document.getElementById("show-password");
+
+showPasswordCheckbox.addEventListener("change", function () {
+    passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+});
+loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            console.log("Login success");
+            window.location.href = "index.html";
+        } else {
+            const data = await response.json();
+            const loginMessage = document.getElementById("login-message");
+
+            if (data.message === "No account found. Please sign up first!") {
+                loginMessage.textContent = "No account found. Please sign up first!";
+            } else if (data.message === "Wrong password. Please check your password.") {
+                loginMessage.textContent = "Wrong password. Please check your password.";
+            } else {
+                // Handle other error cases here
+                loginMessage.textContent = "An error occurred. Please try again.";
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+
+
+    </script>
+    <script src="script/script.js"></script>
+</body>
+</html>
